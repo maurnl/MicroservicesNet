@@ -9,18 +9,17 @@ namespace PlatformService.Data
         {
             using(var scope = app.ApplicationServices.CreateScope())
             {
-                var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                SeedData(dbContext);
-                if(isProduction)
-                {
-                    dbContext.Database.Migrate();
-
-                }
+                SeedData(scope.ServiceProvider.GetRequiredService<AppDbContext>(), isProduction);
             }
         }
 
-        private static void SeedData(AppDbContext context)
+        private static void SeedData(AppDbContext context, bool isProduction)
         {
+            if (isProduction)
+            {
+                context.Database.Migrate();
+            }
+
             if (!context.Platforms.Any())
             {
                 Console.WriteLine("Seeding data");
