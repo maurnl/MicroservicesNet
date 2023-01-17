@@ -8,11 +8,11 @@ namespace CommandsService.Data
         bool PlatformExists(int platformId);
 
         void CreatePlatform(Platform platform);
-        IEnumerable<PlatformID> GetPlatforms();
+        IEnumerable<Platform> GetPlatforms();
         bool SaveChanges();
 
         IEnumerable<Command> GetCommandsByPlatform(int platformId);
-        Command GetCommand(int platform, int commandId);
+        Command GetCommand(int platformId, int commandId);
         void CreateCommand(int platformId, Command command);
     }
 }

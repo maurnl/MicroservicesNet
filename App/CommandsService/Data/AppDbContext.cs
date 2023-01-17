@@ -13,8 +13,8 @@ namespace CommandsService.Data
         {
             builder.Entity<Platform>()
                 .HasMany(p => p.Commands)
-                .WithOne(c => c.Platform)
-                .HasForeignKey(p => p.Platform.Id);
+                .WithOne(c => c.Platform!)
+                .HasForeignKey(p => p.PlatformId);
 
             builder.Entity<Command>()
                 .HasOne(c => c.Platform)
