@@ -58,7 +58,10 @@ namespace PlatformService.AsyncDataServices
         {
             var body = Encoding.UTF8.GetBytes(message);
 
-            _channel.BasicPublish(exchange: "trigger", routingKey: "", basicProperties: null, body: body);
+            _channel.BasicPublish(exchange: "trigger",
+                routingKey: "",
+                basicProperties: null,
+                body: body);
             Console.WriteLine($"Sent message: {message}");
         }
 
