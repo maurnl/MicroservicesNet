@@ -7,6 +7,12 @@ using System.Text.Json;
 
 namespace CommandsService.EventProcessing
 {
+    public enum EventType
+    {
+        PlatformPublished,
+        Undetermined
+    }
+
     public class EventProcessor : IEventProcessor
     {
         private readonly IServiceScopeFactory _scopeFactory;
@@ -67,10 +73,5 @@ namespace CommandsService.EventProcessing
                 Console.WriteLine($"--> Could not add Platform to DB {ex.Message}");
             }
         }
-    }
-    public enum EventType
-    {
-        PlatformPublished,
-        Undetermined
     }
 }
